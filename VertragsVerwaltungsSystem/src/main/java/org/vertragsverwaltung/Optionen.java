@@ -33,6 +33,7 @@ public class Optionen {
 
         String methode = (String) jsonObject.get("methode");
         String aktion = (String) jsonObject.get("aktion");
+        int vsnr = (int) (long) jsonObject.get("vsnr");
 
         if (methode.equals("GET") && aktion.equals("/vertraege")) {
             System.out.println("/vertraege");
@@ -100,20 +101,20 @@ public class Optionen {
     }
     public String getVertragVSNR(FileReader reader, JSONObject jsonObject){ //kein void als return-typ
 
-        String einVertragMitVsnr = n();
+        String einVertragMitVsnr = "";
 
-        einVertragMitVsnr.add("Preis: " + jsonObject.get("preis") + "\nVersicherungsbeginn: " +  jsonObject.get("versicherungsbeginn"));
-        einVertragMitVsnr.add("\nVersicherungsbeginn: " +  jsonObject.get("versicherungsbeginn"));
-        einVertragMitVsnr.add("\nAnragsdatum: " + jsonObject.get("antragsdatum"));
-        einVertragMitVsnr.add("\nAmtliches Kennzeichen: " + jsonObject.get("amtliches_kennzeichen"));
-        einVertragMitVsnr.add("\nFahrzeughersteller: " + jsonObject.get("fahrzeug_hersteller"));
-        einVertragMitVsnr.add("\nFahrzeugtyp: " + jsonObject.get("fahrzeug_typ"));
-        einVertragMitVsnr.add("\nFahrzeug Höchstgeschwindigkeit: " + jsonObject.get("fahrzeug_hoechstgeschwindigkeit"));
-        einVertragMitVsnr.add("\nWagniskennziffer: " + jsonObject.get("wagniskennziffer"));
-        einVertragMitVsnr.add("\nNachname: " + jsonObject.get("nachname"));
-        einVertragMitVsnr.add("\nVorname: " + jsonObject.get("vorname"));
-        einVertragMitVsnr.add("\nAddresse: " + jsonObject.get("addresse"));
-        einVertragMitVsnr.add("\nGeburtsdatum: " + jsonObject.get("geburtsdatum"));
+        einVertragMitVsnr += "Preis: " + jsonObject.get("preis") + "\nVersicherungsbeginn: " +  jsonObject.get("versicherungsbeginn")
+                + "\nVersicherungsbeginn: " +  jsonObject.get("versicherungsbeginn")
+                + "\nAnragsdatum: " + jsonObject.get("antragsdatum")
+                + "\nAmtliches Kennzeichen: " + jsonObject.get("amtliches_kennzeichen")
+                + "\nFahrzeughersteller: " + jsonObject.get("fahrzeug_hersteller")
+                + "\nFahrzeugtyp: " + jsonObject.get("fahrzeug_typ")
+                + "\nFahrzeug Höchstgeschwindigkeit: " + jsonObject.get("fahrzeug_hoechstgeschwindigkeit")
+                + "\nWagniskennziffer: " + jsonObject.get("wagniskennziffer")
+                + "\nNachname: " + jsonObject.get("nachname")
+                + "\nVorname: " + jsonObject.get("vorname")
+                + "\nAddresse: " + jsonObject.get("addresse")
+                + "\nGeburtsdatum: " + jsonObject.get("geburtsdatum");
 
         return einVertragMitVsnr;
     }
@@ -133,6 +134,7 @@ public class Optionen {
         try{
             json.put("methode", "POST");
             json.put("aktion", "/anlegen");
+            json.put("vsnr", null);
             json.put("preis", null);
             json.put("versicherungsbeginn", null);
             json.put("antragsdatum", null);

@@ -1,6 +1,7 @@
 {
   "methode": "POST",
   "aktion": "/neu",
+  "vsnr": 1234,
   "vorname": "Max",
   "wagniskennziffer": 112,
   "addresse": "Musterstraße 10",

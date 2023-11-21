@@ -1,1 +1,17 @@
-{"vorname":null,"wagniskennziffer":null,"addresse":null,"fahrzeug_typ":null,"fahrzeug_hoechstgeschwindigkeit":250,"methode":"POST","fahrzeug_hersteller":null,"preis":null,"versicherungsbeginn":null,"geburtsdatum":"13.06.2004","amtliches_kennzeichen":null,"antragsdatum":null,"nachname":null,"aktion":"/preis"}
+{
+  "vorname": null,
+  "vsnr": 12345,
+  "wagniskennziffer": null,
+  "addresse": null,
+  "fahrzeug_typ": null,
+  "fahrzeug_hoechstgeschwindigkeit": 250,
+  "methode": "POST",
+  "fahrzeug_hersteller": null,
+  "preis": null,
+  "versicherungsbeginn": null,
+  "geburtsdatum": "13.06.2004",
+  "amtliches_kennzeichen": null,
+  "antragsdatum": null,
+  "nachname": null,
+  "aktion": "/preis"
+}
