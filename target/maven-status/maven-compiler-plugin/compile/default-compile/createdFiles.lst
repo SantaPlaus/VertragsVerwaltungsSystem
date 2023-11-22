@@ -1,0 +1,6 @@
+org\vertragsverwaltung\Optionen.class
+org\vertragsverwaltung\PreisBerechnung.class
+org\vertragsverwaltung\Main.class
+org\vertragsverwaltung\Services\ServiceGet.class
+org\vertragsverwaltung\Services\ServicePost.class
+org\vertragsverwaltung\Services\ServiceDelete.class
