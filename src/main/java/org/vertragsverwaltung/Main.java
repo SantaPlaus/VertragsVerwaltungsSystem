@@ -1,27 +1,12 @@
 package org.vertragsverwaltung;
 
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
 public class Main {
-
 
     public static void main(String[] args) {
 
         Optionen opt = new Optionen();
-
-
-        // opt.postAnlegen();
-        // File[] alleVertraege = opt.getVertraege();
-        // System.out.println(alleVertraege);
-        // System.out.println(alleVertraege.toString());
+        opt.optionsAuswahl();
 
         /**
          *  Optionen:
@@ -30,7 +15,7 @@ public class Main {
          *      - einen bestimmten Vertrag anzeigen     GET /vertraege/{vsnr}       ✔️
          *
          *      - neuen/geänderten Vertrag empfangen
-         *        und Preis zurückgeben                 POST /preis                     (noch keine Preisberechnung)
+         *        und Preis zurückgeben                 POST /preis                 ✔️
          *
          *      - leeren Vertrag anlegen                POST /anlegen               ✔️
          *
@@ -39,7 +24,7 @@ public class Main {
          *
          *      - geänderten Vertag empfangen, alten
          *        überschreiben und mit neuem Preis
-         *        zurückgeben                           POST /aenderung             ✔️ (noch kein neuer Preis)
+         *        zurückgeben                           POST /aenderung             ✔️
          *
          *      - löscht Vertrag ohne Prüfung           DELETE /vertraege/{vsnr}    ✔️
          *
@@ -47,16 +32,6 @@ public class Main {
          *
          *
          */
-
-        try {
-            opt.optionsAuswahl();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ParseException pe) {
-            pe.printStackTrace();
-        }
     }
 }
 

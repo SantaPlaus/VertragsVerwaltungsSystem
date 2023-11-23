@@ -2,14 +2,14 @@
   "methode": "POST",
   "aktion": "/neu",
   "vsnr": null,
-  "vorname": "Max",
-  "wagniskennziffer": 112,
-  "addresse": "Musterstraße 10",
-  "fahrzeug_typ": "xyz",
-  "fahrzeug_hoechstgeschwindigkeit": 250,
+  "vorname": "Dieter",
+  "nachname": "Bohlen",
+  "geburtsdatum": "07.02.1954",
+  "addresse": "Bohlenstraße 69",
+  "versicherungsbeginn": "23.11.2023",
   "fahrzeug_hersteller": "BMW",
-  "versicherungsbeginn": "17.11.2023",
-  "geburtsdatum": "13.06.2004",
-  "amtliches_kennzeichen": "MK-PA-1364",
-  "nachname": "Mustermann"
+  "fahrzeug_typ": "M1",
+  "fahrzeug_hoechstgeschwindigkeit": 300,
+  "amtliches_kennzeichen": "K-DB-1954",
+  "wagniskennziffer": 112
 }
