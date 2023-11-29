@@ -6,14 +6,22 @@ import org.json.simple.parser.ParseException;
 import org.vertragsverwaltung.PreisBerechnung;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Services {
 
-    public String getVertraege(){
+    public String getVertraege() throws IOException {
         System.out.println("/vertraege");
+
+
 
         JSONParser jsonParser = new JSONParser();
         FileReader reader;
@@ -22,11 +30,14 @@ public class Services {
 
         String alleVertraege = "";
 
-        File folder = new File("C:\\DEV\\workspace\\VertragsVerwaltungsSystem\\src\\main\\resources\\vertraege");
-        String[] listOfFiles = (String[])(Object) folder.listFiles((dir, name) -> name
-                .endsWith(".json"));
 
-        for (String fileName: listOfFiles) {
+        Stream<Path> walk = Files.walk(Paths.get("C:\\DEV\\workspace\\VertragsVerwaltungsSystem\\src\\main\\resources\\vertraege"));
+
+            List<String> result = walk.map(x -> x.toString())
+                    .filter(f -> f.endsWith(".json")).collect(Collectors.toList());
+
+
+        for (String fileName: result) {
             path = fileName;
             try {
                 reader = new FileReader(path);

@@ -46,7 +46,11 @@ public class Optionen {
         String aktion = (String) jsonObject.get("aktion");
 
         if (methode.equals("GET") && aktion.equals("/vertraege")) {
-            System.out.println(services.getVertraege());
+            try {
+                System.out.println(services.getVertraege());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
         } else if (methode.equals("GET") && aktion.equals("/vertraege/vsnr")) {
             System.out.println(services.getVertragVSNR(jsonObject));
