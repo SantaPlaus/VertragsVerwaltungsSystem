@@ -1,29 +1,45 @@
 package org.vertragsverwaltung.Services;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.vertragsverwaltung.PreisBerechnung;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Services {
 
-    public ArrayList<String> getVertraege(JSONObject jsonObject){
+    public String getVertraege(){
         System.out.println("/vertraege");
 
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader;
+        JSONObject jsonObject;
+        String path;
+
+        String alleVertraege = "";
+
         File folder = new File("C:\\DEV\\workspace\\VertragsVerwaltungsSystem\\src\\main\\resources\\vertraege");
-
-        ArrayList<String> alleVertraege = new ArrayList<>();
-
-        File[] listOfFiles = folder.listFiles((dir, name) -> name
-                .toLowerCase()
+        String[] listOfFiles = (String[])(Object) folder.listFiles((dir, name) -> name
                 .endsWith(".json"));
 
-        for (File file: listOfFiles) {
-            alleVertraege.add("" +"\n\nVersicherungsnummer: " + jsonObject.get("vsnr") +
+        for (String fileName: listOfFiles) {
+            path = fileName;
+            try {
+                reader = new FileReader(path);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                jsonObject = (JSONObject) jsonParser.parse((reader));
+            } catch (IOException | ParseException e) {
+                throw new RuntimeException(e);
+            }
+
+            alleVertraege += "Versicherungsnummer: " + jsonObject.get("vsnr") +
                     "\nPreis: " + jsonObject.get("preis") +
                     "\nVersicherungsbeginn: " +  jsonObject.get("versicherungsbeginn") +
                     "\nAnragsdatum: " + jsonObject.get("antragsdatum") +
@@ -35,31 +51,31 @@ public class Services {
                     "\nNachname: " + jsonObject.get("nachname") +
                     "\nVorname: " + jsonObject.get("vorname") +
                     "\nAddresse: " + jsonObject.get("addresse") +
-                    "\nGeburtsdatum: " + jsonObject.get("geburtsdatum"));
+                    "\nGeburtsdatum: " + jsonObject.get("geburtsdatum") + "\n\n";
         }
         return alleVertraege;
     }
     public String getVertragVSNR(JSONObject jsonObject){
         System.out.println("/vertraege vsnr");
 
-        /*int vsnr = (int)(long) jsonObject.get("vsnr");
+        JSONParser jsonParser = new JSONParser();
+        FileReader reader;
+        JSONObject JsonObjectVomVertr;
 
+        int vsnr = (int)(long) jsonObject.get("vsnr");
         String path = "C:\\DEV\\workspace\\VertragsVerwaltungsSystem\\src\\main\\resources\\vertraege\\" + vsnr + ".json";
 
-
-        JSONObject json = new JSONObject();
-
-        json.put("vsnr", vsnr);
-
-        try{
-            FileWriter fileWriter = new FileWriter(path);
-            fileWriter.write(json.toJSONString());
-            fileWriter.close();
-        }catch(IOException e){
-            e.printStackTrace();
+        try {
+            reader = new FileReader(path);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
-        */
-        return getVertragAlsString(jsonObject);  // nicht den vertrag, sondern den vertrag von der vsnr zurückgeben (?)
+        try {
+            JsonObjectVomVertr = (JSONObject) jsonParser.parse((reader));
+        } catch (IOException | ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return getVertragAlsString(JsonObjectVomVertr);
     }
 
     public void postAnlegen(String path){
@@ -95,6 +111,8 @@ public class Services {
     public void postNeu(JSONObject jsonObject, int generierteVsnr){
         System.out.println("POST /neu");
 
+        Pruefen pruefen = new Pruefen();
+
         File tempFile;
         do {
             generierteVsnr++;
@@ -104,7 +122,16 @@ public class Services {
 
         String path = "C:\\DEV\\workspace\\VertragsVerwaltungsSystem\\src\\main\\resources\\vertraege\\" + generierteVsnr + ".json";
 
-        datenUeberschreiben(jsonObject, generierteVsnr, path);
+        boolean ueberschreiben = pruefen.nachValiditaetPruefen(jsonObject);
+
+        if (ueberschreiben) {
+            datenUeberschreiben(jsonObject, generierteVsnr, path);
+        } else {
+            System.out.println("Daten konnten nicht überschrieben werden, da min. ein Eintrag nicht validiert werden konnte.");
+        }
+
+
+
     }
 
     public void postAenderung(JSONObject jsonObject){
@@ -161,7 +188,7 @@ public class Services {
         jsonObject.put("amtliches_kennzeichen", null);
         jsonObject.put("fahrzeug_hersteller", null);
         jsonObject.put("fahrzeug_typ", null);
-        jsonObject.put("fahrzeug_hoechstgeschwindigkeit", null);
+        jsonObject.put("fahrzeug_hoechstgeschwindigkeit", 0);
         jsonObject.put("wagniskennziffer", null);
         jsonObject.put("nachname", null);
         jsonObject.put("vorname", null);
@@ -176,9 +203,10 @@ public class Services {
     }
     private void datenUeberschreiben(JSONObject jsonObject, int vsnr, String path) {
         JSONObject jsonObjectNew = new JSONObject();
+        PreisBerechnung preis = new PreisBerechnung();
         {
             jsonObjectNew.put("vsnr", vsnr);
-            jsonObjectNew.put("preis", null);
+            jsonObjectNew.put("preis", preis.postPreis(jsonObject));
             jsonObjectNew.put("versicherungsbeginn", jsonObject.get("versicherungsbeginn"));
             jsonObjectNew.put("antragsdatum", "" + antragsDatum());
             jsonObjectNew.put("amtliches_kennzeichen", jsonObject.get("amtliches_kennzeichen"));

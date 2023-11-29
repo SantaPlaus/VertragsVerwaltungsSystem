@@ -11,5 +11,6 @@
   "versicherungsbeginn": "17.11.2023",
   "geburtsdatum": "13.06.2000",
   "amtliches_kennzeichen": "MK-PA-1364",
-  "nachname": "Mustermann"
+  "nachname": "Mustermann",
+  "preis": null
 }

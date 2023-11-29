@@ -3,13 +3,14 @@
   "aktion": "/neu",
   "vsnr": null,
   "vorname": "Dieter",
-  "nachname": "Bohlen",
-  "geburtsdatum": "07.02.1954",
-  "addresse": "Bohlenstraße 69",
-  "versicherungsbeginn": "23.11.2023",
+  "nachname": "Grüber",
+  "geburtsdatum": "31.01.1994",
+  "addresse": "Bohlenstraße 68",
+  "versicherungsbeginn": "29.11.2023",
   "fahrzeug_hersteller": "BMW",
   "fahrzeug_typ": "M1",
   "fahrzeug_hoechstgeschwindigkeit": 300,
-  "amtliches_kennzeichen": "K-DB-1954",
-  "wagniskennziffer": 112
+  "amtliches_kennzeichen": "KD-BA-1994",
+  "wagniskennziffer": 112,
+  "preis": null
 }

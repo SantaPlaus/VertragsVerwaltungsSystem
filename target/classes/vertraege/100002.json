@@ -1,15 +1,15 @@
 {
-  "vorname": "Max",
+  "vorname": "Dieter",
   "wagniskennziffer": 112,
-  "addresse": "Musterstraße 10",
-  "fahrzeug_typ": "xyz",
-  "fahrzeug_hoechstgeschwindigkeit": 250,
+  "addresse": "Bohlenstraße 68",
+  "fahrzeug_typ": "M1",
+  "fahrzeug_hoechstgeschwindigkeit": 300,
   "fahrzeug_hersteller": "BMW",
   "preis": null,
-  "versicherungsbeginn": "17.11.2023",
-  "geburtsdatum": "13.06.2004",
-  "amtliches_kennzeichen": "MK-PA-1364",
+  "versicherungsbeginn": "03.11.2023",
+  "geburtsdatum": "02.02.1954",
+  "amtliches_kennzeichen": "KD-BA-1994",
   "vsnr": 100002,
-  "antragsdatum": null,
-  "nachname": "Mustermann"
+  "antragsdatum": "29.11.2023",
+  "nachname": "Grüber"
 }

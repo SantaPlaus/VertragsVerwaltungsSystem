@@ -24,7 +24,7 @@ public class PreisBerechnung {
 
         rabattInProzent = getRabattInProzent(sfKlasseVereinfacht);
 
-        double versicherungsSummeMonatlich = (vMax / 2) * (1 - rabattInProzent);
+        double versicherungsSummeMonatlich = (vMax) * (1 - rabattInProzent);
 
         return versicherungsSummeMonatlich;
     }

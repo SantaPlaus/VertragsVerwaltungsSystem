@@ -1,15 +1,17 @@
 {
   "methode": "POST",
   "aktion": "/preis",
-  "vsnr": 100012,
   "vorname": "Dieter",
-  "nachname": "Bohlen",
-  "geburtsdatum": "07.02.1954",
-  "addresse": "Bohlenstraße 69",
-  "versicherungsbeginn": "23.11.2023",
-  "fahrzeug_hersteller": "BMW",
+  "wagniskennziffer": 112,
+  "addresse": "Bohlenstraße 68",
   "fahrzeug_typ": "M1",
   "fahrzeug_hoechstgeschwindigkeit": 300,
-  "amtliches_kennzeichen": "K-DB-1954",
-  "wagniskennziffer": 112
+  "fahrzeug_hersteller": "BMW",
+  "preis": null,
+  "versicherungsbeginn": "03.11.2023",
+  "geburtsdatum": "02.02.1954",
+  "amtliches_kennzeichen": "KD-BA-1994",
+  "vsnr": 100001,
+  "antragsdatum": "29.11.2023",
+  "nachname": "Grüber"
 }
