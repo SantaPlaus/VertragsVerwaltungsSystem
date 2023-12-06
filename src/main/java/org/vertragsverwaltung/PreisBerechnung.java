@@ -3,7 +3,6 @@ package org.vertragsverwaltung;
 import org.json.simple.JSONObject;
 
 public class PreisBerechnung {
-
     public double postPreis(JSONObject jsonObject){
         System.out.println("POST /preis");
 
@@ -26,7 +25,9 @@ public class PreisBerechnung {
 
         double versicherungsSummeMonatlich = (vMax) * (1 - rabattInProzent);
 
-        return versicherungsSummeMonatlich;
+        double versicherungsSummeMonatlichGerundet = (double) Math.round(versicherungsSummeMonatlich * 100) / 100;
+
+        return versicherungsSummeMonatlichGerundet;
     }
 
     private double getRabattInProzent(int sfKlasseVereinfacht) {

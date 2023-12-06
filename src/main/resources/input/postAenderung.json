@@ -1,7 +1,7 @@
 {
   "methode": "POST",
   "aktion": "/aenderung",
-  "vsnr": 100011,
+  "vsnr": 100006,
   "vorname": "Maxi",
   "wagniskennziffer": 112,
   "addresse": "Musterstraße 10",

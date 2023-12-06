@@ -18,10 +18,8 @@ import java.util.stream.Stream;
 
 public class Services {
 
-    public String getVertraege() throws IOException {
+    public String getVertraege() throws IOException, ParseException {
         System.out.println("/vertraege");
-
-
 
         JSONParser jsonParser = new JSONParser();
         FileReader reader;
@@ -30,25 +28,17 @@ public class Services {
 
         String alleVertraege = "";
 
-
         Stream<Path> walk = Files.walk(Paths.get("C:\\DEV\\workspace\\VertragsVerwaltungsSystem\\src\\main\\resources\\vertraege"));
 
             List<String> result = walk.map(x -> x.toString())
                     .filter(f -> f.endsWith(".json")).collect(Collectors.toList());
 
-
         for (String fileName: result) {
             path = fileName;
-            try {
-                reader = new FileReader(path);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-            try {
-                jsonObject = (JSONObject) jsonParser.parse((reader));
-            } catch (IOException | ParseException e) {
-                throw new RuntimeException(e);
-            }
+
+            reader = new FileReader(path);
+            jsonObject = (JSONObject) jsonParser.parse((reader));
+
 
             alleVertraege += "Versicherungsnummer: " + jsonObject.get("vsnr") +
                     "\nPreis: " + jsonObject.get("preis") +
@@ -66,7 +56,7 @@ public class Services {
         }
         return alleVertraege;
     }
-    public String getVertragVSNR(JSONObject jsonObject){
+    public String getVertragVSNR(JSONObject jsonObject) throws Exception{
         System.out.println("/vertraege vsnr");
 
         JSONParser jsonParser = new JSONParser();
@@ -76,20 +66,14 @@ public class Services {
         int vsnr = (int)(long) jsonObject.get("vsnr");
         String path = "C:\\DEV\\workspace\\VertragsVerwaltungsSystem\\src\\main\\resources\\vertraege\\" + vsnr + ".json";
 
-        try {
-            reader = new FileReader(path);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            JsonObjectVomVertr = (JSONObject) jsonParser.parse((reader));
-        } catch (IOException | ParseException e) {
-            throw new RuntimeException(e);
-        }
+        reader = new FileReader(path);
+
+        JsonObjectVomVertr = (JSONObject) jsonParser.parse((reader));
+
         return getVertragAlsString(JsonObjectVomVertr);
     }
 
-    public void postAnlegen(String path){
+    public void postAnlegen(String path) throws Exception{
         System.out.println("POST /anlegen");
 
         long generierterName;
@@ -103,31 +87,22 @@ public class Services {
 
         JSONObject jsonLeer = new JSONObject();
 
-        try{
-            leerenVertragErstellen(jsonLeer);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        leerenVertragErstellen(jsonLeer);
 
-        try{
-            FileWriter fileWriter = new FileWriter(path);
-            fileWriter.write(jsonLeer.toJSONString());
-            fileWriter.close();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+        FileWriter fileWriter = new FileWriter(path);
+        fileWriter.write(jsonLeer.toJSONString());
+        fileWriter.close();
+
         System.out.println(getVertragAlsString(jsonLeer));
     }
 
-    public void postNeu(JSONObject jsonObject, int generierteVsnr){
-        System.out.println("POST /neu");
+    public void postNeu(JSONObject jsonObject, int generierteVsnr) throws Exception{
 
         Pruefen pruefen = new Pruefen();
 
         File tempFile;
         do {
             generierteVsnr++;
-            System.out.println(generierteVsnr);
             tempFile = new File("C:\\DEV\\workspace\\VertragsVerwaltungsSystem\\src\\main\\resources\\vertraege\\" + generierteVsnr + ".json");
         } while (tempFile.isFile());
 
@@ -140,13 +115,9 @@ public class Services {
         } else {
             System.out.println("Daten konnten nicht überschrieben werden, da min. ein Eintrag nicht validiert werden konnte.");
         }
-
-
-
     }
 
-    public void postAenderung(JSONObject jsonObject){
-        System.out.println("POST /aenderung");
+    public void postAenderung(JSONObject jsonObject) throws Exception{
 
         int vsnr = (int) (long) jsonObject.get("vsnr");
 
@@ -156,7 +127,6 @@ public class Services {
     }
 
     public void deleteVertraegeVSNR(JSONObject jsonObject){
-        System.out.println("DELETE");
 
         int vsnr = (int) (long) jsonObject.get("vsnr");
 
@@ -212,12 +182,12 @@ public class Services {
         String formattedDate = datum.format(format);
         return formattedDate;
     }
-    private void datenUeberschreiben(JSONObject jsonObject, int vsnr, String path) {
+    private void datenUeberschreiben(JSONObject jsonObject, int vsnr, String path) throws Exception{
         JSONObject jsonObjectNew = new JSONObject();
         PreisBerechnung preis = new PreisBerechnung();
         {
             jsonObjectNew.put("vsnr", vsnr);
-            jsonObjectNew.put("preis", preis.postPreis(jsonObject));
+            jsonObjectNew.put("preis", preis.postPreis(jsonObject) + "€");
             jsonObjectNew.put("versicherungsbeginn", jsonObject.get("versicherungsbeginn"));
             jsonObjectNew.put("antragsdatum", "" + antragsDatum());
             jsonObjectNew.put("amtliches_kennzeichen", jsonObject.get("amtliches_kennzeichen"));
@@ -230,17 +200,15 @@ public class Services {
             jsonObjectNew.put("addresse", jsonObject.get("addresse"));
             jsonObjectNew.put("geburtsdatum", jsonObject.get("geburtsdatum"));
         }
-        try{
-            FileWriter fileWriter = new FileWriter(path);
-            fileWriter.write(jsonObjectNew.toJSONString());
-            fileWriter.close();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+
+        FileWriter fileWriter = new FileWriter(path);
+        fileWriter.write(jsonObjectNew.toJSONString());
+        fileWriter.close();
+
         System.out.println(getVertragAlsString(jsonObjectNew));
     }
 
-    public void preisUeberschreiben(JSONObject jsonObject, double preis) {
+    public void preisUeberschreiben(JSONObject jsonObject, double preis) throws IOException{
         int vsnr = (int) (long) jsonObject.get("vsnr");
 
         String path = "C:\\DEV\\workspace\\VertragsVerwaltungsSystem\\src\\main\\resources\\vertraege\\" + vsnr + ".json";
@@ -248,7 +216,7 @@ public class Services {
         JSONObject jsonObjectNew = new JSONObject();
         {
             jsonObjectNew.put("vsnr", vsnr);
-            jsonObjectNew.put("preis", preis);
+            jsonObjectNew.put("preis", preis + "€");
             jsonObjectNew.put("versicherungsbeginn", jsonObject.get("versicherungsbeginn"));
             jsonObjectNew.put("antragsdatum", "" + antragsDatum());
             jsonObjectNew.put("amtliches_kennzeichen", jsonObject.get("amtliches_kennzeichen"));
@@ -261,13 +229,11 @@ public class Services {
             jsonObjectNew.put("addresse", jsonObject.get("addresse"));
             jsonObjectNew.put("geburtsdatum", jsonObject.get("geburtsdatum"));
         }
-        try{
-            FileWriter fileWriter = new FileWriter(path);
-            fileWriter.write(jsonObjectNew.toJSONString());
-            fileWriter.close();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+
+        FileWriter fileWriter = new FileWriter(path);
+        fileWriter.write(jsonObjectNew.toJSONString());
+        fileWriter.close();
+
         System.out.println(getVertragAlsString(jsonObjectNew));
     }
 }

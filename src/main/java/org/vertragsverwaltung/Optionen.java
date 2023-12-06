@@ -12,11 +12,9 @@ import java.util.Scanner;
 
 
 public class Optionen {
-
     Scanner inputScanner = new Scanner(System.in);
     String path;
     int generierteVsnr = 100000;
-    int vsnr;
 
     public void optionsAuswahl() {
 
@@ -50,20 +48,44 @@ public class Optionen {
                 System.out.println(services.getVertraege());
             } catch (IOException e) {
                 throw new RuntimeException(e);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
             }
 
         } else if (methode.equals("GET") && aktion.equals("/vertraege/vsnr")) {
-            System.out.println(services.getVertragVSNR(jsonObject));
+            try {
+                System.out.println(services.getVertragVSNR(jsonObject));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
         } else if (methode.equals("POST") && aktion.equals("/preis")) {
             double preis = preisBerechnung.postPreis(jsonObject);
-            services.preisUeberschreiben(jsonObject, preis);
+            try {
+                services.preisUeberschreiben(jsonObject, preis);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
         } else if (methode.equals("POST") && aktion.equals("/anlegen")) {
-            services.postAnlegen(path);
+            try {
+                services.postAnlegen(path);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
         } else if (methode.equals("POST") && aktion.equals("/neu")) {
-            services.postNeu(jsonObject, generierteVsnr);
+            try {
+                services.postNeu(jsonObject, generierteVsnr);
+            } catch (NumberFormatException e) {
+                System.out.println("Datum im falschen Format angegeben.");
+                throw new RuntimeException(e);
+            } catch (java.text.ParseException e) {
+                System.out.println("Datum im falschen Format angegeben.");
+                throw new RuntimeException(e);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
         } else if (methode.equals("POST") && aktion.equals("/aenderung")) {
             try {
@@ -72,12 +94,20 @@ public class Optionen {
                 throw new RuntimeException(e);
             }
 
-            services.postAenderung(jsonObject);
+            try {
+                services.postAenderung(jsonObject);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
             double preis = preisBerechnung.postPreis(jsonObject);
-            services.preisUeberschreiben(jsonObject, preis);
+            try {
+                services.preisUeberschreiben(jsonObject, preis);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
-        } else if (methode.equals("DELETE") && aktion.equals("/vertraege/Vsnr")) {
+        } else if (methode.equals("DELETE") && aktion.equals("/vertraege/vsnr")) {
             try {
                 reader.close();
             } catch (IOException e) {
