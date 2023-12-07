@@ -3,13 +3,13 @@ package org.vertragsverwaltung;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.vertragsverwaltung.Services.PreisBerechnung;
 import org.vertragsverwaltung.Services.Services;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
-
 
 public class Optionen {
     Scanner inputScanner = new Scanner(System.in);
@@ -36,8 +36,11 @@ public class Optionen {
         }
         try {
             jsonObject = (JSONObject) jsonParser.parse((reader));
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (ParseException e) {
+            System.out.println("Bitte validiere, ob du alle Werte korrekt eingegeben hast.");
+            return;
         }
 
         String methode = (String) jsonObject.get("methode");
@@ -60,19 +63,15 @@ public class Optionen {
             }
 
         } else if (methode.equals("POST") && aktion.equals("/preis")) {
-            double preis = preisBerechnung.postPreis(jsonObject);
             try {
-                services.preisUeberschreiben(jsonObject, preis);
-            } catch (IOException e) {
+                System.out.println(preisBerechnung.postPreis(jsonObject) + "€");
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
 
         } else if (methode.equals("POST") && aktion.equals("/anlegen")) {
-            try {
-                services.postAnlegen(path);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+
+            System.out.println(services.leererVertrag());
 
         } else if (methode.equals("POST") && aktion.equals("/neu")) {
             try {
@@ -97,13 +96,6 @@ public class Optionen {
             try {
                 services.postAenderung(jsonObject);
             } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-
-            double preis = preisBerechnung.postPreis(jsonObject);
-            try {
-                services.preisUeberschreiben(jsonObject, preis);
-            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 

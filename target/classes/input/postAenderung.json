@@ -1,16 +1,17 @@
 {
   "methode": "POST",
   "aktion": "/aenderung",
-  "vsnr": 100011,
-  "vorname": "Maxi",
+  "vorname": "Peter",
   "wagniskennziffer": 112,
-  "addresse": "Musterstraße 10",
-  "fahrzeug_typ": "xyz",
+  "addresse": "Bohlenstraße 67",
+  "fahrzeug_typ": "M1",
   "fahrzeug_hoechstgeschwindigkeit": 250,
   "fahrzeug_hersteller": "BMW",
-  "versicherungsbeginn": "17.11.2023",
-  "geburtsdatum": "13.06.2000",
-  "amtliches_kennzeichen": "MK-PA-1364",
-  "nachname": "Mustermann",
-  "preis": null
+  "preis": "131.25",
+  "versicherungsbeginn": "06.12.2023",
+  "geburtsdatum": "31.06.1990",
+  "amtliches_kennzeichen": "BM-AW-0001",
+  "vsnr": 100001,
+  "antragsdatum": "06.12.2023",
+  "nachname": "Tantz"
 }

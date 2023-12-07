@@ -1,7 +1,7 @@
 {
   "methode": "POST",
   "aktion": "/preis",
-  "vorname": "Dieter",
+  "vorname": "Ayse",
   "wagniskennziffer": 112,
   "addresse": "Bohlenstraße 68",
   "fahrzeug_typ": "M1",
@@ -9,9 +9,9 @@
   "fahrzeug_hersteller": "BMW",
   "preis": 67,
   "versicherungsbeginn": "29.11.2023",
-  "geburtsdatum": "34.02.1954",
+  "geburtsdatum": "34.02.1994",
   "amtliches_kennzeichen": "KD-BA-1994",
-  "vsnr": 100005,
+  "vsnr": 1000078,
   "antragsdatum": "29.11.2023",
-  "nachname": "Grüber"
+  "nachname": "Altinsoy"
 }

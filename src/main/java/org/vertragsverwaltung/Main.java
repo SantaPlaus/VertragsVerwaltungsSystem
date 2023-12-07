@@ -10,23 +10,23 @@ public class Main {
 
         /**
          *  Optionen:
-         *      - alle Verträge anzeigen                GET /vertraege              ✔️
+         *      - alle Verträge anzeigen                    GET /vertraege              ✔️
          *
-         *      - einen bestimmten Vertrag anzeigen     GET /vertraege/{vsnr}       ✔️
+         *      - einen bestimmten Vertrag anzeigen         GET /vertraege/{vsnr}       ✔️
          *
          *      - neuen/geänderten Vertrag empfangen
-         *        und Preis zurückgeben                 POST /preis                 ✔️
+         *        und Preis zurückgeben                     POST /preis                 ✔️      // nur den Preis berechnen und ausgeben // vorher prüfen
          *
-         *      - leeren Vertrag anlegen                POST /anlegen               ✔️
+         *      - leeren Vertrag anlegen                    POST /anlegen               ✔️
          *
          *      - neuen Vertrag empfangen, anlegen (prüfen)
-         *        und neue VSNR zurückgeben             POST /neu                   ✔️
+         *        und neue VSNR zurückgeben                 POST /neu                   ✔️
          *
          *      - geänderten Vertag empfangen, alten
          *        überschreiben und mit neuem Preis
-         *        zurückgeben                           POST /aenderung             ✔️
+         *        zurückgeben                               POST /aenderung             ✔️
          *
-         *      - löscht Vertrag ohne Prüfung           DELETE /vertraege/{vsnr}    ✔️
+         *      - löscht Vertrag ohne Prüfung               DELETE /vertraege/{vsnr}    ✔️
          *
          *      {„Methode“: „GET“, „Aktion“: „/vertraege“}
          *
