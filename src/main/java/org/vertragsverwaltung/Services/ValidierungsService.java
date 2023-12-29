@@ -10,7 +10,6 @@ import java.time.Year;
 import java.util.Date;
 
 public class ValidierungsService {
-    // TODO allen User Input validieren (NullPointerException) (nur noch postAenderung, postNeu und postPreis)
     public boolean isNeuVertragValid(JSONObject jsonObject) {
         if (isAenderungVertragValid(jsonObject) && isVersicherungsbeginnValid(jsonObject)) {
             return true;
