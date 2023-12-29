@@ -1,17 +1,15 @@
 {
-  "methode": "POST",
-  "aktion": "/aenderung",
-  "vorname": "0129",
+  "vorname": "Peter",
   "wagniskennziffer": 112,
   "addresse": "Bohlenstraße 67",
   "fahrzeug_typ": "Niro",
   "fahrzeug_hoechstgeschwindigkeit": 10,
   "fahrzeug_hersteller": "Porsche",
-  "preis": "8.93",
-  "versicherungsbeginn": "01.02.2022",
+  "preis": "8.93\u20AC",
+  "versicherungsbeginn": "01.02.2025",
   "geburtsdatum": "31.06.1985",
   "amtliches_kennzeichen": "K-CT-0001",
-  "vsnr": 100013,
-  "antragsdatum": "08.12.2023",
+  "vsnr": 100012,
+  "antragsdatum": "15.12.2023",
   "nachname": "Meier"
 }

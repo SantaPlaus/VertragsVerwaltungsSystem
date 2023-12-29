@@ -1,5 +1,5 @@
 {
   "methode": "GET",
   "aktion": "/vertraege/vsnr",
-  "vsnr": 100001b
+  "vsnr": 100001
 }

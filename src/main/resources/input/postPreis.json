@@ -1,17 +1,7 @@
 {
   "methode": "POST",
   "aktion": "/preis",
-  "vorname": "Ayse",
-  "wagniskennziffer": 112,
-  "addresse": "Bohlenstraße 68",
-  "fahrzeug_typ": "M1",
-  "fahrzeug_hoechstgeschwindigkeit": 300,
+  "fahrzeug_hoechstgeschwindigkeit": 250,
   "fahrzeug_hersteller": "BMW",
-  "preis": 67,
-  "versicherungsbeginn": "29.11.2023",
-  "geburtsdatum": "34.02.1994",
-  "amtliches_kennzeichen": "KD-BA-1994",
-  "vsnr": 1000078,
-  "antragsdatum": "29.11.2023",
-  "nachname": "Altinsoy"
+
 }

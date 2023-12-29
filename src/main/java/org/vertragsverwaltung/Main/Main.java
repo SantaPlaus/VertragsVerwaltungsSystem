@@ -1,12 +1,14 @@
-package org.vertragsverwaltung;
+package org.vertragsverwaltung.Main;
 
+
+import org.vertragsverwaltung.Controller.VertragController;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Optionen opt = new Optionen();
-        opt.optionsAuswahl();
+        VertragController vertragController = new VertragController();
+        vertragController.optionsAuswahl();
 
         /**
          *  Optionen:

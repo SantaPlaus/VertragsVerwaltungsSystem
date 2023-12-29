@@ -1,17 +1,17 @@
 {
   "methode": "POST",
   "aktion": "/aenderung",
-  "vorname": "Peter",
+  "vorname": "0129",
   "wagniskennziffer": 112,
   "addresse": "Bohlenstraße 67",
-  "fahrzeug_typ": "M1",
-  "fahrzeug_hoechstgeschwindigkeit": 250,
-  "fahrzeug_hersteller": "BMW",
-  "preis": "131.25",
-  "versicherungsbeginn": "06.12.2023",
-  "geburtsdatum": "31.06.1990",
-  "amtliches_kennzeichen": "BM-AW-0001",
-  "vsnr": 100001,
-  "antragsdatum": "06.12.2023",
-  "nachname": "Tantz"
+  "fahrzeug_typ": "Niro",
+  "fahrzeug_hoechstgeschwindigkeit": 10,
+  "fahrzeug_hersteller": "Porsche",
+  "preis": "8.93",
+  "versicherungsbeginn": "01.02.2022",
+  "geburtsdatum": "31.06.1985",
+  "amtliches_kennzeichen": "K-CT-0001",
+  "vsnr": 100013,
+  "antragsdatum": "08.12.2023",
+  "nachname": "Meier"
 }
