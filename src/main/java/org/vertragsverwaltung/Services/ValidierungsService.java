@@ -6,7 +6,6 @@ import org.vertragsverwaltung.Data.FileRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.Year;
 import java.util.Date;
 
 public class ValidierungsService {
@@ -35,6 +34,9 @@ public class ValidierungsService {
             String datum = (String) jsonObject.get("geburtsdatum");
             // Weist der String-Variable datum den value vom key geburtsdatum des JSONObjects zu
 
+            Date aktuallesDatum = new Date();
+            // Initalisierung des heutigen Datums
+
             Date geburtsdatum;
             // deklariert die Date-Variable geburtsdatum
 
@@ -48,9 +50,12 @@ public class ValidierungsService {
                 // Behandelt eine ParseException, falls die Werte nicht übergeben werden konnten, gibt eine Fehlermedlung aus, sowie false zurück
 
             }
-            if (geburtsdatum.getYear() > (Year.now().getValue()) - 18) {
+
+
+            if (isPersonUnderEighteen(geburtsdatum, aktuallesDatum)) {
+                System.out.println("Die Person muss 18 Jahre oder älter sein");
                 return false;
-                // Überprüft, ob die Person älter als 18 ist, sonst wird false zurückgegeben
+                // Überprüft, ob die Person älter als 18 ist, sonst wird eine Fehlermeldung und false zurückgegeben
 
             }
         } catch (NullPointerException e) {
@@ -226,6 +231,20 @@ public class ValidierungsService {
             return false;
             // Bei Misserfolg wird false zurückgegeben
         }
+    }
+    private static boolean isPersonUnderEighteen(Date geburtsdatum, Date vergleichsdatum) {
+        /**
+         * Überprüfen, ob die Person unter 18 ist
+         * @param geburtsdatum Datum, an welchem die zu vergleichende Person geboren ist
+         * @param vergleichsdatum Heutiges Datum
+         * @return true, wenn unter 18, sonst false
+         */
+        long millisProJahr = 1000L * 60 * 60 * 24 * 365;
+        long alterInJahren = (vergleichsdatum.getTime() - geburtsdatum.getTime()) / millisProJahr;
+        // Berechnung des Alters in Jahren, um zu gucken wie alt die Person ist
+
+        return alterInJahren < 18;
+        // Vergleichsoperator im return statement, sodass ein boolean zurückgegeben wird, je nachdem wie alt die Person ist
     }
 
     public String isMethodeValid(JSONObject jsonObject) {
