@@ -7,9 +7,9 @@
 
   "vorname": "Peter",
   "nachname": "Meier",
-  "geburtsdatum": "31.06.1985",
+  "geburtsdatum": "05.01.2006",
   "addresse": "Bohlenstraße 67",
-  "versicherungsbeginn": "01.02.2025",
+  "versicherungsbeginn": "01.01.2024",
   "fahrzeug_hersteller": "bmw",
   "fahrzeug_typ": "Niro",
   "fahrzeug_hoechstgeschwindigkeit": 100,

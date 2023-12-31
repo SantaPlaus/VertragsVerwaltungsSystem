@@ -1,16 +1,17 @@
 {
   "methode": "POST",
   "aktion": "/neu",
+  "wagniskennziffer": 112,
   "vsnr": null,
+  "preis": null,
+
   "vorname": "Peter",
   "nachname": "Meier",
-  "geburtsdatum": "31.06.1985",
+  "geburtsdatum": "05.01.2006",
   "addresse": "Bohlenstraße 67",
-  "versicherungsbeginn": "01.02.2025",
+  "versicherungsbeginn": "01.01.2024",
   "fahrzeug_hersteller": "bmw",
   "fahrzeug_typ": "Niro",
   "fahrzeug_hoechstgeschwindigkeit": 100,
-  "amtliches_kennzeichen": "K-CT-0001",
-  "wagniskennziffer": 112,
-  "preis": null
+  "amtliches_kennzeichen": "K-CT-0001"
 }
