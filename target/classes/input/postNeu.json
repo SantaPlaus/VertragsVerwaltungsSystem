@@ -7,9 +7,9 @@
   "geburtsdatum": "31.06.1985",
   "addresse": "Bohlenstraße 67",
   "versicherungsbeginn": "01.02.2025",
-  "fahrzeug_hersteller": "Porsche",
+  "fahrzeug_hersteller": "bmw",
   "fahrzeug_typ": "Niro",
-  "fahrzeug_hoechstgeschwindigkeit": 10,
+  "fahrzeug_hoechstgeschwindigkeit": 100,
   "amtliches_kennzeichen": "K-CT-0001",
   "wagniskennziffer": 112,
   "preis": null
