@@ -5,13 +5,13 @@
   "vsnr": null,
   "preis": null,
 
-  "vorname": "Peter",
-  "nachname": "Meier",
-  "geburtsdatum": "05.01.2006",
-  "addresse": "Bohlenstraße 67",
+  "vorname": "Zacharias Paul",
+  "nachname": "Achenbach",
+  "geburtsdatum": "13.06.2004",
+  "addresse": "Winterberger Straße 10",
   "versicherungsbeginn": "01.01.2024",
-  "fahrzeug_hersteller": "bmw",
-  "fahrzeug_typ": "Niro",
-  "fahrzeug_hoechstgeschwindigkeit": 100,
-  "amtliches_kennzeichen": "K-CT-0001"
+  "fahrzeug_hersteller": "Porsche",
+  "fahrzeug_typ": "Taycan",
+  "fahrzeug_hoechstgeschwindigkeit": 186,
+  "amtliches_kennzeichen": "MK-PA-1364"
 }

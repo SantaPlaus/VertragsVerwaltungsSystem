@@ -3,16 +3,16 @@
   "aktion": "/aenderung",
   "antragsdatum": "08.12.2023",
   "wagniskennziffer": 112,
-  "vsnr": 100013,
-  "versicherungsbeginn": "01.02.2022",
-  "preis": "as",
 
-  "vorname": "0129",
-  "addresse": "Bohlenstraße 67",
-  "fahrzeug_typ": "Niro",
-  "fahrzeug_hoechstgeschwindigkeit": 10,
-  "fahrzeug_hersteller": "Porsche",
-  "geburtsdatum": "31.06.1985",
-  "amtliches_kennzeichen": "K-CT-0001",
-  "nachname": "Meier"
+  "vsnr": 100001,
+
+  "vorname": "Zacharias Paul",
+  "nachname": "Achenbach",
+  "geburtsdatum": "13.06.2004",
+  "addresse": "Winterberger Straße 10",
+  "versicherungsbeginn": "",
+  "fahrzeug_hersteller": "Cupra",
+  "fahrzeug_typ": "Leon",
+  "fahrzeug_hoechstgeschwindigkeit": 186,
+  "amtliches_kennzeichen": "MK-PA-1364"
 }
