@@ -5,13 +5,13 @@
   "vsnr": null,
   "preis": null,
 
-  "vorname": "Peter",
-  "nachname": "Meier",
-  "geburtsdatum": "05.01.2006",
-  "addresse": "Bohlenstraße 67",
-  "versicherungsbeginn": "01.01.2024",
-  "fahrzeug_hersteller": "bmw",
-  "fahrzeug_typ": "Niro",
-  "fahrzeug_hoechstgeschwindigkeit": 100,
-  "amtliches_kennzeichen": "K-CT-0001"
+  "vorname": "Max ",
+  "nachname": "Mustermann",
+  "geburtsdatum": "02.02.2002",
+  "addresse": "Musterstraße 2020",
+  "versicherungsbeginn": "01.03.2024",
+  "fahrzeug_hersteller": "Seat",
+  "fahrzeug_typ": "Ibiza",
+  "fahrzeug_hoechstgeschwindigkeit": 180,
+  "amtliches_kennzeichen": "K-MM-2002"
 }

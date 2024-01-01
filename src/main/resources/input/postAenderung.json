@@ -3,16 +3,16 @@
   "aktion": "/aenderung",
   "antragsdatum": "08.12.2023",
   "wagniskennziffer": 112,
-  "vsnr": 100013,
-  "versicherungsbeginn": "01.02.2022",
-  "preis": "as",
 
-  "vorname": "0129",
-  "addresse": "Bohlenstraße 67",
-  "fahrzeug_typ": "Niro",
-  "fahrzeug_hoechstgeschwindigkeit": 10,
-  "fahrzeug_hersteller": "Porsche",
-  "geburtsdatum": "31.06.1985",
-  "amtliches_kennzeichen": "K-CT-0001",
-  "nachname": "Meier"
+  "vsnr": 100001,
+
+  "vorname": "Max ",
+  "nachname": "Mustermann",
+  "geburtsdatum": "02.02.2002",
+  "addresse": "Musterstraße 2020",
+  "versicherungsbeginn": "01.03.2024",
+  "fahrzeug_hersteller": "Seat",
+  "fahrzeug_typ": "Ibiza",
+  "fahrzeug_hoechstgeschwindigkeit": 233,
+  "amtliches_kennzeichen": "K-MM-2002"
 }

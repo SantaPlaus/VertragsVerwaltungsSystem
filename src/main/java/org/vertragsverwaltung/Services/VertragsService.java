@@ -112,6 +112,11 @@ public class VertragsService {
             // Behandelt eine NullPointerException, wenn keine vsnr existiert und Ausgeben sowie Rückgabe von Fehlermeldungen
         }
 
+        if (JsonObjectVomVertr == null) {
+            return "Der Pfad kann nicht gelesen werden.";
+            // Prüfen, ob das JSONObject "null" als Wert besitzt. Falls ja, wird eine Fehlermeldung zurückgegeben
+        }
+
         return getVertragAlsString(JsonObjectVomVertr);
         // Rückgabe des Vertrages als String
     }
